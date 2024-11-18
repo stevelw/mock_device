@@ -15,3 +15,14 @@ Replace:
     "batt": 100
   }
 },
+
+Add to start:
+
+{
+  "catID": ,
+  "trackingData": [
+
+Add to end:
+
+  ]
+}
