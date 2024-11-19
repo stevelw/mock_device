@@ -1,6 +1,6 @@
-import fs from "fs/promises";
+import * as fs from "fs/promises";
 
-interface CatDatapoint {
+export interface CatDatapoint {
   timestamp: string;
   body: {
     id: number;
@@ -12,15 +12,16 @@ interface CatDatapoint {
   };
 }
 
-interface CatData {
+export interface CatData {
   catID: number;
   trackingData: [CatDatapoint];
 }
 
-function catDataWithID(catID: number): Promise<CatData> {
+export function catDataWithID(catID: number): Promise<CatData> {
   return fs
     .readFile(`${__dirname}/testData/cat_${catID}.json`, "utf-8")
-    .then((rawData) => {
-      return JSON.parse(rawData);
+    .then((rawData: any) => {
+      const catData: CatData = JSON.parse(rawData);
+      return catData;
     });
 }
