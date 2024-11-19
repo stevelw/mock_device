@@ -1,3 +1,5 @@
+import fs from "fs/promises";
+
 interface CatDatapoint {
   timestamp: string;
   body: {
@@ -15,3 +17,10 @@ interface CatData {
   trackingData: [CatDatapoint];
 }
 
+function catDataWithID(catID: number): Promise<CatData> {
+  return fs
+    .readFile(`${__dirname}/testData/cat_${catID}.json`, "utf-8")
+    .then((rawData) => {
+      return JSON.parse(rawData);
+    });
+}
