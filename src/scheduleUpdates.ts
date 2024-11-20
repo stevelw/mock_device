@@ -1,14 +1,18 @@
 import { catDataWithID } from "./cat";
 import { scheduleDeviceUpdate } from "./scheduler";
-import { CatData, CatDatapoint } from "./types/CatTypes";
 
 function scheduleACat() {
   return catDataWithID(1).then((catData) => {
-    for (const dataPoint of catData.trackingData) {
-      const triggerTime = new Date(
-        new Date(dataPoint.timestamp).toTimeString()
+    for (const datapoint of catData.trackingData) {
+      const timestamp = new Date(datapoint.timestamp);
+      let triggerTime = new Date();
+      triggerTime.setHours(
+        timestamp.getHours(),
+        timestamp.getMinutes(),
+        timestamp.getSeconds(),
+        timestamp.getMilliseconds()
       );
-      scheduleDeviceUpdate(triggerTime, dataPoint.body);
+      scheduleDeviceUpdate(triggerTime, datapoint.body);
       console.log(`POST scheduled for ${triggerTime}`);
     }
   });
