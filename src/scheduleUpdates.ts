@@ -15,6 +15,7 @@ function scheduleACat() {
       scheduleDeviceUpdate(triggerTime, datapoint.body);
       console.log(`POST scheduled for ${triggerTime}`);
     }
+    console.log(`Finished scheduling`);
   });
 }
 
