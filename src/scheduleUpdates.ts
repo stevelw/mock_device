@@ -26,3 +26,5 @@ function loop() {
 }
 
 scheduleACat();
+
+loop();
