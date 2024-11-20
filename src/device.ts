@@ -1,6 +1,7 @@
 import axios from "axios";
-import { catDataWithID, type CatDatapoint } from "./cat";
 import "dotenv/config";
+import { CatDatapoint } from "./types/CatTypes";
+import { catDataWithID } from "./cat";
 
 const network = axios.create({
   baseURL: process.env.BACKEND_HOST,
