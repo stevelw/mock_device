@@ -1,5 +1,5 @@
 export interface DeviceUpdateBody {
-  id: number;
+  id: string;
   lat: number;
   lon: number;
   accuracy: string;
