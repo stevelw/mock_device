@@ -7,5 +7,5 @@ const network = axios.create({
 });
 
 export function sendCatLocation(body: DeviceUpdateBody) {
-  return network.post("/cats/location", body);
+  return network.post("/api/devices/update", body);
 }
